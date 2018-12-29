@@ -132,22 +132,19 @@ public class HomeActivity extends AppCompatActivity
         bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                FrameLayout content = (FrameLayout) findViewById(R.id.content);
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        transaction.replace(R.id.content, new HomeFragment()).commit();
+                        fragmentManager(new HomeFragment());
 
                         if (!getSupportActionBar().isShowing()) {
                             getSupportActionBar().show();
                         }
                         return true;
                     case R.id.navigation_maps:
-                        transaction.replace(R.id.content, new MapsFragment()).commit();
+                        fragmentManager(new MapsFragment());
                         return true;
                     case R.id.navigation_notif:
-                        transaction.replace(R.id.content, new NotificationFragment()).commit();
+                        fragmentManager(new NotificationFragment());
                         return true;
                 }
                 return false;
